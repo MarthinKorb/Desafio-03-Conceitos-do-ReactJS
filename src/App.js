@@ -47,28 +47,32 @@ function App() {
   }
 
   return (
-    <div>
-      <ul data-testid="repository-list">
-        {repositories.map(repository => (
-          <li key={repository.id}>
-            {repository.title}            
+    <section className="container">
 
-            <button className="btnDelete" onClick={() => handleRemoveRepository(repository.id)}>
-              Remover
-            </button>
+      <header><h1>Listagem de Repositórios</h1></header>
+      <div>
+        <ul data-testid="repository-list">
+          {repositories.map(repository => (
+            <li key={repository.id}>
+              {repository.title}
 
-            <button className="btnLike" onClick={() => handleLikeRepository(repository.id)}>Like</button>
+              <button className="btnDelete" onClick={() => handleRemoveRepository(repository.id)}>
+                Remover
+              </button>
 
-            <button className="btnUnlike" onClick={() => handleUnLikeRepository(repository.id)}>Unlike</button>
-            <h4>{repository.likes} curtidas</h4>
-          </li>
-        ))
-        }
+              <button className="btnLike" onClick={() => handleLikeRepository(repository.id)}>Like</button>
 
-      </ul>
+              <button className="btnUnlike" onClick={() => handleUnLikeRepository(repository.id)}>Unlike</button>
+              <h4>{repository.likes} curtidas</h4>
+            </li>
+          ))
+          }
 
-      <button onClick={handleAddRepository}>Adicionar</button>
-    </div>
+        </ul>
+
+        <button  onClick={handleAddRepository}>Adicionar</button>
+      </div>
+    </section>
   );
 }
 

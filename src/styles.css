@@ -7,6 +7,18 @@
 body {
   font-size: 20px;
   background: #f5f5f5;
+  color: #000;
+}
+h1{
+  margin-left: 30px;
+  font-size: 30;
+}
+
+.container {
+  background-color: #7159c1;
+  padding: 50px;
+  border-radius: 8px;
+  margin: 50px 150px;
 }
 
 div {
@@ -17,6 +29,9 @@ div {
 div li {
   display: flex;
   align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 div li + li {
