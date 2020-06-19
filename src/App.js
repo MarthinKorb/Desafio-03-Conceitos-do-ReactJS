@@ -32,14 +32,18 @@ function App() {
     setRepositories(repositories.filter(repository => repository.id !== id));
   }
 
-  async function handleAddLike(id) {
-    await api.post(`/repositories/${id}/like`);
-    setLikes(likes);   
+  async function handleLikeRepository(id) {
+    const { data } = await api.post(`repositories/${id}/like`)
+    setRepositories(
+      repositories.map(repository => repository.id === id ? data : repository)
+    )
   }
 
-  async function handleUnLike(id) {
-    await api.post(`/repositories/${id}/unlike`);
-    setLikes(likes);   
+  async function handleUnLikeRepository(id) {
+    const { data } = await api.post(`repositories/${id}/unlike`)
+    setRepositories(
+      repositories.map(repository => repository.id === id ? data : repository)
+    )
   }
 
   return (
@@ -53,10 +57,10 @@ function App() {
               Remover
             </button>
 
-            <button className="btnLike" onClick={() => handleAddLike(repository.id)}>Like</button>
+            <button className="btnLike" onClick={() => handleLikeRepository(repository.id)}>Like</button>
 
-            <button className="btnUnlike" onClick={() => handleUnLike(repository.id)}>Unlike</button>
-            <h4>{repository.likes}</h4>
+            <button className="btnUnlike" onClick={() => handleUnLikeRepository(repository.id)}>Unlike</button>
+            <h4>{repository.likes} curtidas</h4>
           </li>
         ))
         }
